@@ -1,6 +1,7 @@
 import React from "react";
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
   return (
     <footer className="text-center text-lg-start bg-body-tertiary text-muted"  style={{ fontFamily: "'Oswald', sans-serif" }}>
       {/* Section: Social media */}
@@ -139,7 +140,7 @@ const Footer = () => {
         className="text-center p-4"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
       >
-        © 2021 Copyright:{" "}
+        © {currentYear} Copyright:{" "}
         <a
           className="text-reset fw-bold text-decoration-none"
           href="https://aspasija.com/"
