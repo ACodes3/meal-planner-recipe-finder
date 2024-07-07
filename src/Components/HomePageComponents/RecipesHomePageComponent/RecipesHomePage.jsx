@@ -29,7 +29,7 @@ const RecipesHomePage = () => {
           fontFamily: "'Oswald', sans-serif",
         }}
       >
-        <Card style={{ width: "25rem", margin: "20px" }}>
+        <Card style={{ width: "25rem", margin: "10px" }}>
           <Card.Img variant="top" src={HealthyDish} />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
