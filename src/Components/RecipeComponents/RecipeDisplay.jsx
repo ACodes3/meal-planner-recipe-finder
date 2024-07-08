@@ -226,12 +226,13 @@ const RecipeDisplay = () => {
       <Row>
         <Col>
           <h2>Directions</h2>
-          <p className="lh-lg" style={{ fontWeight: "lighter" }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-            maxime iure reiciendis impedit debitis voluptatum, perferendis
-            nesciunt repudiandae iste dicta nemo nam, tempore ipsum minima
-            dolores velit? Molestiae, maiores hic?
-          </p>
+          <ul className="lh-lg" style={{ fontWeight: "lighter" }}>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+            <li>Ratione maxime iure reiciendis impedit debitis voluptatum.</li>
+            <li>Perferendis nesciunt repudiandae iste dicta nemo nam.</li>
+            <li>Tempore ipsum minima dolores velit?</li>
+            <li>Molestiae, maiores hic?</li>
+          </ul>
         </Col>
       </Row>
     </Container>
