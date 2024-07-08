@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Image } from "react-bootstrap";
+import { Button, Card, Form, Image, Table } from "react-bootstrap";
 import {
     BarChartFill,
     Book,
@@ -8,12 +8,15 @@ import {
     ClockFill,
     EggFill,
     Eye,
+    InfoSquare,
+    List,
     PeopleFill,
     Person,
     PrinterFill,
     ShareFill,
     Star,
     StarFill,
+    ThreeDotsVertical,
 } from "react-bootstrap-icons";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -22,6 +25,15 @@ import RecipeImg from "../../Images/recipe-1-image.jpg";
 
 const RecipeDisplay = () => {
   const starStyle = { color: "#FFD700" }; // Golden color
+
+  const ingredients = [
+    "4 kg Lamb",
+    "4 pcs Garlic",
+    "2 pcs Egg",
+    "1 spoon Black pepper",
+    "6 spoon Coriander",
+    "5 piece Red Chili",
+  ];
 
   return (
     <Container style={{ fontFamily: "'Oswald', sans-serif" }}>
@@ -125,7 +137,7 @@ const RecipeDisplay = () => {
       </Row>
       <Row className="mt-5 mb-5">
         <Col>
-          <p className="lh-lg" style={{fontWeight:"lighter"}}>
+          <p className="lh-lg" style={{ fontWeight: "lighter" }}>
             The doner is a Turkish creation of meat, often lamb, but not
             necessarily so, that is seasoned, stacked in a cone shape, and
             cooked slowly on a vertical rotisserie. As the outer layers of the
@@ -145,6 +157,70 @@ const RecipeDisplay = () => {
             skewers, but the easiest way to get the sliced look of a street
             doner kebab is to make a sort of meatloaf.
           </p>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Card body>
+            <p>
+              <ThreeDotsVertical />
+              <List /> Ingredients
+            </p>
+            <Card body>
+              <Form>
+                {ingredients.map((ingredient, index) => (
+                  <Form.Check
+                    key={index}
+                    type="checkbox"
+                    label={ingredient}
+                    style={{ marginBottom: "10px" }}
+                  />
+                ))}
+              </Form>
+            </Card>
+          </Card>
+        </Col>
+        <Col>
+          <Card body>
+            <p>
+              <InfoSquare /> Nutrition
+            </p>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Nutrient</th>
+                  <th colSpan={2}>Daily Value*</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Total Fat</td>
+                  <td>45.8g</td>
+                  <td>32%</td>
+                </tr>
+                <tr>
+                  <td>Cholesterols</td>
+                  <td>224mg</td>
+                  <td>79%</td>
+                </tr>
+                <tr>
+                  <td>Sodium</td>
+                  <td>149mg</td>
+                  <td>44%</td>
+                </tr>
+                <tr>
+                  <td>Vitamin D</td>
+                  <td>150 ng</td>
+                  <td>2%</td>
+                </tr>
+                <tr>
+                  <td>Water</td>
+                  <td>150ml</td>
+                  <td>3%</td>
+                </tr>
+              </tbody>
+            </Table>
+          </Card>
         </Col>
       </Row>
     </Container>
