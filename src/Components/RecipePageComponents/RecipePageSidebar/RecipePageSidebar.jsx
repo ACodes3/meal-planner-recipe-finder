@@ -26,6 +26,7 @@ const RecipePageSidebar = () => {
           </Col>
         </Row>
       </Form>
+      <h3>Latest Recipes</h3>
       <Card>
         <div className="d-flex flex-row justify-content-center align-items-center">
           <Card.Img variant="top" src={CardImg} style={imgStyle} />
