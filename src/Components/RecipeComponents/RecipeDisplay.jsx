@@ -223,6 +223,17 @@ const RecipeDisplay = () => {
           </Card>
         </Col>
       </Row>
+      <Row>
+        <Col>
+          <h2>Directions</h2>
+          <p className="lh-lg" style={{ fontWeight: "lighter" }}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
+            maxime iure reiciendis impedit debitis voluptatum, perferendis
+            nesciunt repudiandae iste dicta nemo nam, tempore ipsum minima
+            dolores velit? Molestiae, maiores hic?
+          </p>
+        </Col>
+      </Row>
     </Container>
   );
 };
