@@ -2,8 +2,9 @@ import React from "react";
 import { Button, Card, Form, Image, Table } from "react-bootstrap";
 import {
     CheckCircle,
+    ClipboardHeartFill,
     ClockFill,
-    EggFill,
+    CurrencyExchange,
     HeartPulseFill,
     InfoSquare,
     List,
@@ -96,10 +97,10 @@ const RecipeDisplay = () => {
         <Col sm>
           <Card>
             <Card.Body className="d-flex justify-content-around align-items-center gap-3">
-              <ClockFill />
+              <CurrencyExchange />
               <Card.Text>
-                <p>Prep Time</p>
-                <p style={{ fontSize: "12px" }}>20 Mins</p>
+                <p>Price Per Serving</p>
+                <p style={{ fontSize: "12px" }}>Price</p>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -109,7 +110,7 @@ const RecipeDisplay = () => {
             <Card.Body className="d-flex justify-content-around align-items-center gap-3">
               <ClockFill />
               <Card.Text>
-                <p>Cook Time</p>
+                <p>Ready In</p>
                 <p style={{ fontSize: "12px" }}>55 Mins</p>
               </Card.Text>
             </Card.Body>
@@ -120,7 +121,7 @@ const RecipeDisplay = () => {
             <Card.Body className="d-flex justify-content-around align-items-center gap-3">
               <PeopleFill />
               <Card.Text>
-                <p>Serving</p>
+                <p>Serving Size</p>
                 <p style={{ fontSize: "12px" }}>4</p>
               </Card.Text>
             </Card.Body>
@@ -129,10 +130,10 @@ const RecipeDisplay = () => {
         <Col sm>
           <Card>
             <Card.Body className="d-flex justify-content-around align-items-center gap-3">
-              <EggFill />
+              <ClipboardHeartFill />
               <Card.Text>
-                <p>Serving Size</p>
-                <p style={{ fontSize: "12px" }}>Flatbread</p>
+                <p>Weight Watchers</p>
+                <p style={{ fontSize: "12px" }}>Points</p>
               </Card.Text>
             </Card.Body>
           </Card>
