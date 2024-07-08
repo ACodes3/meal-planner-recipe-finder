@@ -1,7 +1,11 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import {
+    BarChartFill,
+    Book,
+    BookmarksFill,
     CalendarDate,
+    Eye,
     Person,
     PrinterFill,
     ShareFill,
@@ -19,21 +23,17 @@ const RecipeDisplay = () => {
     <Container style={{ fontFamily: "'Oswald', sans-serif" }}>
       <Row>
         <Col
-          xs={6}
-          md={4}
+          sm={8}
           className="d-flex justify-content-start align-items-center gap-3"
         >
           <p>
-            <CalendarDate /> Publish date
+            <CalendarDate />{" "} Publish date
           </p>
           <p>
-            <Person /> Author
+            <Person />{" "} Author
           </p>
-        </Col>
-        <Col xs={6} md={4}>
           <p className="d-flex justify-content-start align-items-center gap-1">
-            Rating:{" "}
-            <StarFill style={starStyle} />
+            Rating:{" "} <StarFill style={starStyle} />
             <StarFill style={starStyle} />
             <StarFill style={starStyle} />
             <Star style={starStyle} />
@@ -41,8 +41,7 @@ const RecipeDisplay = () => {
           </p>
         </Col>
         <Col
-          xs={6}
-          md={4}
+          sm={4}
           className="d-flex justify-content-end align-items-center gap-3"
         >
           <Button variant="light">
@@ -51,6 +50,22 @@ const RecipeDisplay = () => {
           <Button variant="light">
             <ShareFill />
           </Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col className="d-flex justify-content-start align-items-center gap-3">
+          <p>
+            <BookmarksFill />{" "} Pasta
+          </p>
+          <p>
+            <Book />{" "} Cuisine: Italian, Thai
+          </p>
+          <p>
+            <BarChartFill />{" "} Difficulty: Easy
+          </p>
+          <p>
+            <Eye />{" "} 1,289 Views
+          </p>
         </Col>
       </Row>
     </Container>
