@@ -82,6 +82,9 @@ const RecipeDisplay = () => {
           <p>
             <CheckCircle /> Whole30
           </p>
+          <p>
+            <CheckCircle /> Healthy
+          </p>
         </Col>
       </Row>
       <Row>
