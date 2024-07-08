@@ -6,7 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 
 const NavbarComponent = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary" style={{ fontFamily: "'Oswald', sans-serif" }}>
+    <Navbar expand="lg" className="bg-body-tertiary" style={{ fontFamily: "'Oswald', sans-serif" }} sticky="top">
       <Container fluid>
         <Navbar.Brand href="/" className="d-flex align-items-center gap-2">
           <img

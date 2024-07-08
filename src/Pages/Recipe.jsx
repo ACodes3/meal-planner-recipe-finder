@@ -3,6 +3,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
+import RecipePageSidebar from "../Components/RecipePageComponents/RecipePageSidebar/RecipePageSidebar";
 import HeroImg from "../Images/notebook-near-ingredients-utensils.jpg";
 
 const Recipe = () => {
@@ -36,7 +37,9 @@ const Recipe = () => {
       </div>
       <Row className="mt-5">
         <Col sm={8}>text</Col>
-        <Col sm={4}>text</Col>
+        <Col sm={4}>
+            <RecipePageSidebar />
+        </Col>
       </Row>
     </Container>
   );
