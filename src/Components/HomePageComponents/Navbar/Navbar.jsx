@@ -8,7 +8,7 @@ const NavbarComponent = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary" style={{ fontFamily: "'Oswald', sans-serif" }}>
       <Container fluid>
-        <Navbar.Brand href="#" className="d-flex align-items-center gap-2">
+        <Navbar.Brand href="/" className="d-flex align-items-center gap-2">
           <img
             alt=""
             src="meal.png"
