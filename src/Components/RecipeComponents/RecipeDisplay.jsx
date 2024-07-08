@@ -4,10 +4,10 @@ import {
     BarChartFill,
     Book,
     BookmarksFill,
-    CalendarDate,
     ClockFill,
     EggFill,
     Eye,
+    HeartPulseFill,
     InfoSquare,
     List,
     PeopleFill,
@@ -43,13 +43,13 @@ const RecipeDisplay = () => {
           className="d-flex justify-content-start align-items-center gap-3"
         >
           <p>
-            <CalendarDate /> Publish date
+            <HeartPulseFill /> Health Score
           </p>
           <p>
             <Person /> Author
           </p>
           <p className="d-flex justify-content-start align-items-center gap-1">
-            Rating: <StarFill style={starStyle} />
+            Spoonacular Score: <StarFill style={starStyle} />
             <StarFill style={starStyle} />
             <StarFill style={starStyle} />
             <Star style={starStyle} />
