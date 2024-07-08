@@ -1,12 +1,9 @@
 import React from "react";
 import { Button, Card, Form, Image, Table } from "react-bootstrap";
 import {
-    BarChartFill,
-    Book,
-    BookmarksFill,
+    CheckCircle,
     ClockFill,
     EggFill,
-    Eye,
     HeartPulseFill,
     InfoSquare,
     List,
@@ -16,7 +13,7 @@ import {
     ShareFill,
     Star,
     StarFill,
-    ThreeDotsVertical,
+    ThreeDotsVertical
 } from "react-bootstrap-icons";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -71,16 +68,19 @@ const RecipeDisplay = () => {
       <Row>
         <Col className="d-flex justify-content-start align-items-center gap-3">
           <p>
-            <BookmarksFill /> Pasta
+            <CheckCircle /> Gluten Free
           </p>
           <p>
-            <Book /> Cuisine: Italian, Thai
+            <CheckCircle /> Ketogenic
           </p>
           <p>
-            <BarChartFill /> Difficulty: Easy
+            <CheckCircle /> Vegan
           </p>
           <p>
-            <Eye /> 1,289 Views
+            <CheckCircle /> Vegetarian
+          </p>
+          <p>
+            <CheckCircle /> Whole30
           </p>
         </Col>
       </Row>
