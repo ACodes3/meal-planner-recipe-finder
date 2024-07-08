@@ -10,7 +10,7 @@ const RecipesPage = () => {
   return (
     <Container className="mb-5">
       <RecipePageHeader/>
-      <Row className="mt-3">
+      <Row className="mt-5">
         <Col sm={8}>
           <RecipePageDisplay />
         </Col>

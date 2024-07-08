@@ -16,7 +16,7 @@ const RecipePageSidebar = () => {
       className="d-flex flex-column justify-content-center align-items-start gap-4"
       style={{ fontFamily: "'Oswald', sans-serif" }}
     >
-      <Form className="w-100">
+      <Form className="w-100 mb-4">
         <Row className="gx-2">
           <Col>
             <Form.Control type="text" placeholder="Search" />
