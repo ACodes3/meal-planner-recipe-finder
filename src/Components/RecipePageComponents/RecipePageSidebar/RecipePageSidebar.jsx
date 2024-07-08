@@ -12,7 +12,10 @@ const RecipePageSidebar = () => {
   };
 
   return (
-    <Container className="d-flex flex-column justify-content-center align-items-start gap-4">
+    <Container
+      className="d-flex flex-column justify-content-center align-items-start gap-4"
+      style={{ fontFamily: "'Oswald', sans-serif" }}
+    >
       <Form className="w-100">
         <Row className="gx-2">
           <Col>

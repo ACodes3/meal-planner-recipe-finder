@@ -6,7 +6,7 @@ import HealthyDish from "../../../Images/zucchini-pasta-red-sauce-sauteed-vegeta
 
 const RecipePageDisplay = () => {
   return (
-    <div style={{ marginRight:"20px" }}>
+    <div style={{ marginRight:"20px", fontFamily: "'Oswald', sans-serif"  }}>
         <Form className="w-100 mb-3">
         <Row className="gx-2">
           <Col>
