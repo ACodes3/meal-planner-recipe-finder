@@ -33,7 +33,7 @@ const RecipesHomePage = () => {
           <Card.Img variant="top" src={HealthyDish} />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
-            <Card.Text>
+            <Card.Text style={{fontWeight:"lighter"}}>
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>
@@ -44,7 +44,7 @@ const RecipesHomePage = () => {
           <Card.Img variant="top" src={HealthyDish} />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
-            <Card.Text>
+            <Card.Text style={{fontWeight:"lighter"}}>
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>
@@ -55,7 +55,7 @@ const RecipesHomePage = () => {
           <Card.Img variant="top" src={HealthyDish} />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
-            <Card.Text>
+            <Card.Text style={{fontWeight:"lighter"}}>
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>
@@ -66,7 +66,7 @@ const RecipesHomePage = () => {
           <Card.Img variant="top" src={HealthyDish} />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
-            <Card.Text>
+            <Card.Text style={{fontWeight:"lighter"}}>
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>
@@ -77,7 +77,7 @@ const RecipesHomePage = () => {
           <Card.Img variant="top" src={HealthyDish} />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
-            <Card.Text>
+            <Card.Text style={{fontWeight:"lighter"}}>
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>
@@ -88,7 +88,7 @@ const RecipesHomePage = () => {
           <Card.Img variant="top" src={HealthyDish} />
           <Card.Body>
             <Card.Title>Card Title</Card.Title>
-            <Card.Text>
+            <Card.Text style={{fontWeight:"lighter"}}>
               Some quick example text to build on the card title and make up the
               bulk of the card's content.
             </Card.Text>

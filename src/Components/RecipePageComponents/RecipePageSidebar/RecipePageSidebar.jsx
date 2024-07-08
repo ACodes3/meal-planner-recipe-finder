@@ -32,7 +32,7 @@ const RecipePageSidebar = () => {
           <Card.Img variant="top" src={CardImg} style={imgStyle} />
           <Card.Body>
             <Card.Title>Card title</Card.Title>
-            <Card.Text>
+            <Card.Text style={{fontWeight:"lighter"}}>
               This is a wider card with supporting text below as a natural
               lead-in to additional content. This content is a little bit
               longer.
@@ -48,7 +48,7 @@ const RecipePageSidebar = () => {
           <Card.Img variant="top" src={CardImg} style={imgStyle} />
           <Card.Body>
             <Card.Title>Card title</Card.Title>
-            <Card.Text>
+            <Card.Text style={{fontWeight:"lighter"}}>
               This is a wider card with supporting text below as a natural
               lead-in to additional content. This content is a little bit
               longer.
@@ -64,7 +64,7 @@ const RecipePageSidebar = () => {
           <Card.Img variant="top" src={CardImg} style={imgStyle} />
           <Card.Body>
             <Card.Title>Card title</Card.Title>
-            <Card.Text>
+            <Card.Text style={{fontWeight:"lighter"}}>
               This is a wider card with supporting text below as a natural
               lead-in to additional content. This content is a little bit
               longer.
