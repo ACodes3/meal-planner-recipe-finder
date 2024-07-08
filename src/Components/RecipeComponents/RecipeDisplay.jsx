@@ -125,7 +125,7 @@ const RecipeDisplay = () => {
       </Row>
       <Row className="mt-5 mb-5">
         <Col>
-          <p className="lh-lg">
+          <p className="lh-lg" style={{fontWeight:"lighter"}}>
             The doner is a Turkish creation of meat, often lamb, but not
             necessarily so, that is seasoned, stacked in a cone shape, and
             cooked slowly on a vertical rotisserie. As the outer layers of the
