@@ -1,20 +1,20 @@
 import React from "react";
 import { Button, Card, Form, Image, Table } from "react-bootstrap";
 import {
-    CheckCircle,
-    ClipboardHeartFill,
-    ClockFill,
-    CurrencyExchange,
-    HeartPulseFill,
-    InfoSquare,
-    List,
-    PeopleFill,
-    Person,
-    PrinterFill,
-    ShareFill,
-    Star,
-    StarFill,
-    ThreeDotsVertical
+  CheckCircle,
+  ClipboardHeartFill,
+  ClockFill,
+  CurrencyExchange,
+  HeartPulseFill,
+  InfoSquare,
+  List,
+  PeopleFill,
+  Person,
+  PrinterFill,
+  ShareFill,
+  Star,
+  StarFill,
+  ThreeDotsVertical
 } from "react-bootstrap-icons";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
@@ -35,6 +35,7 @@ const RecipeDisplay = () => {
 
   return (
     <Container style={{ fontFamily: "'Oswald', sans-serif" }}>
+      <h2 className="mt-3 mb-3">Recipes Title</h2>
       <Row>
         <Col
           sm={8}

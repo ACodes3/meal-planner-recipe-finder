@@ -25,7 +25,7 @@ const RecipeHeader = () => {
         className="position-absolute top-50 start-50 translate-middle text-white text-center"
         style={{ fontFamily: "'Oswald', sans-serif" }}
       >
-        <h1 style={{ fontSize: "4rem" }}>Recipe name</h1>
+        <h1 style={{ fontSize: "4rem" }}> Discover Recipes</h1>
         <p>
           Discover a variety of recipes to suit every taste and preference.
           Customize your meal plan and enjoy delicious, healthy meals every day.
