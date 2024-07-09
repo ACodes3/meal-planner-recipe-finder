@@ -60,7 +60,7 @@ const RecipesHomePage = () => {
           marginTop: "50px",
         }}
       >
-        Our Popular Picks
+        Peoples Popular Picks
       </h4>
       <div
         style={{
