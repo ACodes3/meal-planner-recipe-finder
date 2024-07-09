@@ -1,9 +1,76 @@
-import React from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import CardImg from "../../../Images/zucchini-pasta-red-sauce-sauteed-vegetables-zucchini-carrot-onion-garlic-tomatoes.jpg";
 
 const RecipePageSidebar = () => {
+  const [popularRecipes, setPopularRecipes] = useState([]);
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    fetchPopularRecipes();
+  }, []);
+
+  const fetchPopularRecipes = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.spoonacular.com/recipes/random`,
+        {
+          params: {
+            apiKey: process.env.REACT_APP_API_KEY,
+            number: 6, // Fetch 6 popular recipes initially
+          },
+        }
+      );
+      const popularData = response.data.recipes;
+      setPopularRecipes(popularData);
+    } catch (error) {
+      console.error("Error fetching popular recipes:", error);
+    }
+  };
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.get(
+        `https://api.spoonacular.com/recipes/complexSearch`,
+        {
+          params: {
+            apiKey: process.env.REACT_APP_API_KEY,
+            query: searchQuery,
+            number: 9, // Maximum of 9 items to display
+          },
+        }
+      );
+      const newDisplay = response.data.results;
+      setFilteredRecipes(newDisplay);
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    }
+  };
+
+  const displayRecipes =
+    filteredRecipes.length > 0 ? filteredRecipes : popularRecipes;
+
+  const truncateSummary = (summary) => {
+    if (!summary) return ""; // Check if summary is undefined or null
+
+    const cleanSummary = summary.replace(/<[^>]+>/g, "");
+    const words = cleanSummary.split(" ");
+
+    if (words.length > 100) {
+      return words.slice(0, 13).join(" ") + "...";
+    }
+
+    return cleanSummary;
+  };
+
   const imgStyle = {
     width: "100px",
     height: "100px",
@@ -16,65 +83,44 @@ const RecipePageSidebar = () => {
       className="d-flex flex-column justify-content-center align-items-start gap-4"
       style={{ fontFamily: "'Oswald', sans-serif" }}
     >
-      <Form className="w-100 mb-4">
-        <Row className="gx-2">
-          <Col>
-            <Form.Control type="text" placeholder="Search" />
-          </Col>
-          <Col xs="auto">
-            <Button type="submit">Search</Button>
-          </Col>
-        </Row>
-      </Form>
-      <h3>Latest Recipes</h3>
-      <Card>
-        <div className="d-flex flex-row justify-content-center align-items-center">
-          <Card.Img variant="top" src={CardImg} style={imgStyle} />
-          <Card.Body>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text style={{fontWeight:"lighter"}}>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
-          </Card.Body>
-        </div>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <div className="d-flex flex-row justify-content-center align-items-center">
-          <Card.Img variant="top" src={CardImg} style={imgStyle} />
-          <Card.Body>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text style={{fontWeight:"lighter"}}>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
-          </Card.Body>
-        </div>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
-      <Card>
-        <div className="d-flex flex-row justify-content-center align-items-center">
-          <Card.Img variant="top" src={CardImg} style={imgStyle} />
-          <Card.Body>
-            <Card.Title>Card title</Card.Title>
-            <Card.Text style={{fontWeight:"lighter"}}>
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </Card.Text>
-          </Card.Body>
-        </div>
-        <Card.Footer>
-          <small className="text-muted">Last updated 3 mins ago</small>
-        </Card.Footer>
-      </Card>
+      <h3>Popular Recipes</h3>
+      {popularRecipes.map((recipe) => (
+        <Card key={recipe.id}>
+          <div className="d-flex flex-row justify-content-center align-items-center">
+            <Card.Img variant="top" src={recipe.image} style={imgStyle} />
+            <Card.Body>
+              <Card.Title>{recipe.title}</Card.Title>
+              <Card.Text style={{ fontWeight: "lighter" }}>
+                {truncateSummary(recipe.summary)}
+              </Card.Text>
+            </Card.Body>
+          </div>
+          <Card.Footer>
+            <small className="text-muted">
+              Ready in {recipe.readyInMinutes} minutes
+            </small>
+          </Card.Footer>
+        </Card>
+      ))}
+      <h3 className="mt-4">Latest Recipes</h3>
+      {displayRecipes.map((recipe) => (
+        <Card key={recipe.id}>
+          <div className="d-flex flex-row justify-content-center align-items-center">
+            <Card.Img variant="top" src={recipe.image} style={imgStyle} />
+            <Card.Body>
+              <Card.Title>{recipe.title}</Card.Title>
+              <Card.Text style={{ fontWeight: "lighter" }}>
+                {truncateSummary(recipe.summary)}
+              </Card.Text>
+            </Card.Body>
+          </div>
+          <Card.Footer>
+            <small className="text-muted">
+              Ready in {recipe.readyInMinutes} minutes
+            </small>
+          </Card.Footer>
+        </Card>
+      ))}
     </Container>
   );
 };
