@@ -28,7 +28,6 @@ const NavbarComponent = () => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/recipes">Recipes</Nav.Link>
             {/*<Nav.Link href="/meal-plans">Meal Plans</Nav.Link>*/}
-            <Nav.Link href="/recipe">Recipe</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control

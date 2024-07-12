@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 const RecipesHomePage = () => {
   const [popularRecipes, setPopularRecipes] = useState([]);
@@ -80,9 +80,9 @@ const RecipesHomePage = () => {
               <Card.Text style={{ fontWeight: "lighter" }}>
                 {truncateSummary(recipe.summary)}
               </Card.Text>
-              <Button variant="primary" href={recipe.sourceUrl} target="_blank">
-                View Recipe
-              </Button>
+              <Link className="btn btn-primary" to={`/recipe/${recipe.id}`}>
+                Go to Recipe
+              </Link>
             </Card.Body>
           </Card>
         ))}

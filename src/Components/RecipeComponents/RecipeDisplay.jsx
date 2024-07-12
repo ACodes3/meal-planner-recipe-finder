@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Form, Image, Table } from "react-bootstrap";
 import {
   CheckCircle,
@@ -14,38 +15,51 @@ import {
   ShareFill,
   Star,
   StarFill,
-  ThreeDotsVertical
+  ThreeDotsVertical,
 } from "react-bootstrap-icons";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import RecipeImg from "../../Images/recipe-1-image.jpg";
+import { useParams } from "react-router-dom";
 
 const RecipeDisplay = () => {
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState(null);
   const starStyle = { color: "#FFD700" }; // Golden color
 
-  const ingredients = [
-    "4 kg Lamb",
-    "4 pcs Garlic",
-    "2 pcs Egg",
-    "1 spoon Black pepper",
-    "6 spoon Coriander",
-    "5 piece Red Chili",
-  ];
+  useEffect(() => {
+    const fetchRecipe = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=${process.env.REACT_APP_API_KEY}`
+        );
+        setRecipe(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching the recipe data", error);
+      }
+    };
+
+    fetchRecipe();
+  }, [id]);
+
+  if (!recipe) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <Container style={{ fontFamily: "'Oswald', sans-serif" }}>
-      <h2 className="mt-3 mb-3">Recipes Title</h2>
+      <h2 className="mt-3 mb-3">{recipe.title}</h2>
       <Row>
         <Col
           sm={8}
           className="d-flex justify-content-start align-items-center gap-3"
         >
           <p>
-            <HeartPulseFill /> Health Score
+            <HeartPulseFill /> {recipe.healthScore} Health Score
           </p>
           <p>
-            <Person /> Author
+            <Person /> {recipe.sourceName || "Unknown Author"}
           </p>
           <p className="d-flex justify-content-start align-items-center gap-1">
             Spoonacular Score: <StarFill style={starStyle} />
@@ -69,29 +83,23 @@ const RecipeDisplay = () => {
       </Row>
       <Row>
         <Col className="d-flex justify-content-start align-items-center gap-3">
-          <p>
-            <CheckCircle /> Gluten Free
-          </p>
-          <p>
-            <CheckCircle /> Ketogenic
-          </p>
-          <p>
-            <CheckCircle /> Vegan
-          </p>
-          <p>
-            <CheckCircle /> Vegetarian
-          </p>
-          <p>
-            <CheckCircle /> Whole30
-          </p>
-          <p>
-            <CheckCircle /> Healthy
-          </p>
+          {recipe.diets.map((diet, index) => (
+            <p key={index}>
+              <CheckCircle /> {diet.charAt(0).toUpperCase() + diet.slice(1)}
+            </p>
+          ))}
         </Col>
       </Row>
       <Row>
         <Col>
-          <Image src={RecipeImg} fluid rounded />
+          <div style={{ width: "100%", height: "400px", overflow: "hidden" }}>
+            <Image
+              src={recipe.image}
+              fluid
+              rounded
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          </div>
         </Col>
       </Row>
       <Row className="mt-4">
@@ -101,7 +109,7 @@ const RecipeDisplay = () => {
               <CurrencyExchange />
               <Card.Text>
                 <p>Price Per Serving</p>
-                <p style={{ fontSize: "12px" }}>Price</p>
+                <p style={{ fontSize: "12px" }}>${recipe.pricePerServing}</p>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -112,7 +120,7 @@ const RecipeDisplay = () => {
               <ClockFill />
               <Card.Text>
                 <p>Ready In</p>
-                <p style={{ fontSize: "12px" }}>55 Mins</p>
+                <p style={{ fontSize: "12px" }}>{recipe.readyInMinutes} Mins</p>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -123,7 +131,7 @@ const RecipeDisplay = () => {
               <PeopleFill />
               <Card.Text>
                 <p>Serving Size</p>
-                <p style={{ fontSize: "12px" }}>4</p>
+                <p style={{ fontSize: "12px" }}>{recipe.servings}</p>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -134,7 +142,10 @@ const RecipeDisplay = () => {
               <ClipboardHeartFill />
               <Card.Text>
                 <p>Weight Watchers</p>
-                <p style={{ fontSize: "12px" }}>Points</p>
+                <p style={{ fontSize: "12px" }}>
+                  {" "}
+                  {recipe.weightWatcherSmartPoints}{" "}Points
+                </p>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -143,24 +154,7 @@ const RecipeDisplay = () => {
       <Row className="mt-5 mb-5">
         <Col>
           <p className="lh-lg" style={{ fontWeight: "lighter" }}>
-            The doner is a Turkish creation of meat, often lamb, but not
-            necessarily so, that is seasoned, stacked in a cone shape, and
-            cooked slowly on a vertical rotisserie. As the outer layers of the
-            meat cooks, it’s shaved off and served in a pita or other flatbread
-            with vegetables and sauce. Doner is the “mother,” as it were, of
-            Arabic shawarma, Mexican al pastor, and the popular Greek gyros.
-            Although the sliced meat can be served on a platter with rice and
-            cooked vegetables, it’s most popular as a sandwich eaten as fast
-            street food. You might find tomatoes, lettuce, cucumbers, red onion,
-            cucumbers, or pickles inside the pita, and the sauce might be Greek
-            yogurt-based tzatziki or Middle Eastern tahini. Making an authentic
-            doner kebab at home can be a bit tricky although still possible if
-            you have the set up for a slow cooking vertical rotating spit. For
-            most home kitchens, however, some improvisation will be required.
-            But the flavors and spices will be easier to recreate than the exact
-            shape. You can form ground lamb into balls and thread them on
-            skewers, but the easiest way to get the sliced look of a street
-            doner kebab is to make a sort of meatloaf.
+            {recipe.summary.replace(/<[^>]*>?/gm, "")}
           </p>
         </Col>
       </Row>
@@ -173,11 +167,11 @@ const RecipeDisplay = () => {
             </p>
             <Card body>
               <Form>
-                {ingredients.map((ingredient, index) => (
+                {recipe.extendedIngredients.map((ingredient, index) => (
                   <Form.Check
                     key={index}
                     type="checkbox"
-                    label={ingredient}
+                    label={`${ingredient.amount} ${ingredient.unit} ${ingredient.name}`}
                     style={{ marginBottom: "10px" }}
                   />
                 ))}
@@ -185,60 +179,48 @@ const RecipeDisplay = () => {
             </Card>
           </Card>
         </Col>
-        <Col>
-          <Card body>
-            <p>
-              <InfoSquare /> Nutrition
-            </p>
+        <Col></Col>
+      </Row>
+      <Row>
+        <Col className="mt-3">
+          <h2>Directions</h2>
+          <ul className="lh-lg" style={{ fontWeight: "lighter" }}>
+            {recipe.analyzedInstructions[0]?.steps.map((step, index) => (
+              <li key={index}>{step.step}</li>
+            ))}
+          </ul>
+        </Col>
+      </Row>
+      <Row>
+        <Card body>
+          <p>
+            <InfoSquare /> Nutrition
+          </p>
+          {recipe.nutrition && recipe.nutrition.nutrients ? (
             <Table striped bordered hover>
               <thead>
                 <tr>
                   <th>Nutrient</th>
-                  <th colSpan={2}>Daily Value*</th>
+                  <th>Amount</th>
+                  <th>% Daily Value</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Total Fat</td>
-                  <td>45.8g</td>
-                  <td>32%</td>
-                </tr>
-                <tr>
-                  <td>Cholesterols</td>
-                  <td>224mg</td>
-                  <td>79%</td>
-                </tr>
-                <tr>
-                  <td>Sodium</td>
-                  <td>149mg</td>
-                  <td>44%</td>
-                </tr>
-                <tr>
-                  <td>Vitamin D</td>
-                  <td>150 ng</td>
-                  <td>2%</td>
-                </tr>
-                <tr>
-                  <td>Water</td>
-                  <td>150ml</td>
-                  <td>3%</td>
-                </tr>
+                {recipe.nutrition.nutrients.map((nutrient, index) => (
+                  <tr key={index}>
+                    <td>{nutrient.name}</td>
+                    <td>
+                      {nutrient.amount} {nutrient.unit}
+                    </td>
+                    <td>{nutrient.percentOfDailyNeeds}%</td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h2>Directions</h2>
-          <ul className="lh-lg" style={{ fontWeight: "lighter" }}>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-            <li>Ratione maxime iure reiciendis impedit debitis voluptatum.</li>
-            <li>Perferendis nesciunt repudiandae iste dicta nemo nam.</li>
-            <li>Tempore ipsum minima dolores velit?</li>
-            <li>Molestiae, maiores hic?</li>
-          </ul>
-        </Col>
+          ) : (
+            <p>No nutrition information available</p>
+          )}
+        </Card>
       </Row>
     </Container>
   );

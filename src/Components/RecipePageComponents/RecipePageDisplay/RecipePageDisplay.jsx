@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Form, Pagination, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 
 const RecipePageDisplay = () => {
   const [allRecipes, setAllRecipes] = useState([]);
@@ -133,13 +134,9 @@ const RecipePageDisplay = () => {
               <Card.Title>{recipe.title}</Card.Title>
             </Card.Body>
             <Card.Footer className="d-flex justify-content-between align-items-center">
-              <Button
-                variant="primary"
-                href={`https://spoonacular.com/recipes/${recipe.id}`}
-              >
+              <Link className="btn btn-primary" to={`/recipe/${recipe.id}`}>
                 Go to Recipe
-              </Button>
-              <Button variant="warning">Nutritional Value</Button>
+              </Link>
             </Card.Footer>
           </Card>
         ))}
